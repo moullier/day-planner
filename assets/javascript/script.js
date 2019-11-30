@@ -58,7 +58,7 @@ $(document).ready(function() {
             $(newActivityCol).text(activityArray[i]);
         }
         
-        
+        $(newTabCol).text("Hello");
         let newImg = $("<img>");
         newImg.attr("src", "./assets/images/lock.png");
         newImg.addClass("img-fluid lockimage");
@@ -84,8 +84,9 @@ $(document).ready(function() {
         let day = d.getDay();
         let month = d.getMonth();
         let date = d.getDate();
-        let suffix;
         
+        // figure out the correct suffix based on the day
+        let suffix;
         if (d > 3 && d < 21)
             suffix = "th";
         else {
@@ -102,100 +103,26 @@ $(document).ready(function() {
         return dateStr;
     }
 
-
+    // save changes in the row where the saveBtn is clicked in the localStorage
     $(".saveBtn").on("click", function() {
-        // let test = $(this).attr("dataHour");
-        // alert("this is hour" + test);
+        
+        // get array from localStorage
         let activityArray = JSON.parse(localStorage.getItem("activities") || "[]");
 
         console.log(activityArray);
 
+        // get the dataHour of the specific saveBtn that was clicked
         let hour = $(this).attr("dataHour");
 
+        // build the String matching the activity div's id
         let idString = "#hour" + hour;
         console.log(idString);
         console.log($(idString).text());
 
+        // retrieve the text in the activity div of the correct row, and set it to the correct index of the array
         activityArray[hour] = $(idString).text();
         localStorage.setItem("activities", JSON.stringify(activityArray));
 
-        // for(let i = 9; i < 18; i++) {
-        //     if(i == hour) {
-        //         let idString = "#hour" + i;
-        //         console.log($(idString).text());
-        //     } else {
-
-        //     }
-
-        // }
     });
-
-
-
-
-
-
-
-
-
-
-
-
-    // // MAJOR TASK #1: DYNAMICALLY CREATE BUTTONS
-    // // =================================================================================
-
-    // // 1. Create a for-loop to iterate through the letters array.
-
-    // // Inside the loop...
-
-    // // 2. Create a variable named "letterBtn" equal to $("<button>");
-
-    // // 3. Then give each "letterBtn" the following classes: "letter-button" "letter" "letter-button-color".
-
-    // // 4. Then give each "letterBtn" an attribute called "data-letter", with a value eqaual to "letters[i]"
-
-    // // 5. Then give each "letterBtn" a text equal to "letters[i]".
-
-    // // 6. Finally, append each "letterBtn" to the "#buttons" div (provided).
-
-    // // Be sure to test that your code works for this major task, before proceeding to the next one!
-
-    // // MAJOR TASK #2: ATTACH ON-CLICK EVENTS TO "LETTER" BUTTONS
-    // // =================================================================================
-
-    // // 7. Create an "on-click" event attached to the ".letter-button" class.
-
-    // // Inside the on-click event...
-
-    // // 8. Create a variable called "fridgeMagnet" and set the variable equal to a new div.
-
-    // // 9. Give each "fridgeMagnet" the following classes: "letter fridge-color".
-
-    // // 10. Then chain the following code onto the "fridgeMagnet" variable: .text($(this).attr("data-letter"))
-
-    // // 11. Lastly append the fridgeMagnet variable to the "#display" div (provided);
-
-    // // Be sure to test that your code works for this major task, before proceeding to the next one!
-
-    // $(".letter-button").on("click", function() {
-    //     let fridgeMagnet = $("<div>");
-    //     $(fridgeMagnet).addClass("letter fridge-color");
-    //     $(fridgeMagnet).text($(this).attr("data-letter"));
-    //     $("#display").append(fridgeMagnet);
-    // });
-
-
-    // // MAJOR TASK #3: ATTACH ON-CLICK EVENTS TO "CLEAR" BUTTON
-    // // =================================================================================
-
-    // // 12. Create an "on-click" event attached to the "#clear" button id.
-
-    // // Inside the on-click event...
-
-    // // 13. Use the jQuery "empty()" method to clear the contents of the "#display" div.
-
-    // $("#clear").on("click", function() {
-    //     $("#display").empty();
-    // });
 
 });
