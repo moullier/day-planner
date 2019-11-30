@@ -9,16 +9,25 @@ $(document).ready(function() {
     console.log(currentHour);
 
     // create the rows for the hours of the day, from 9 AM to 5PM
-    for(let i = 9; i < 24; i++) {
+    for(let i = 9; i < 18; i++) {
+
+        // create a div for the row, and three smaller divs for columns
         let newHour = $("<div>");
         let newTimeCol = $("<div>");
         let newActivityCol = $("<div>");
         let newTabCol = $("<div>");
+        
+        // add the appropriate classes and attributes so that the divs style correctly and can be interacted with
         $(newHour).addClass("row hour");
-        $(newTimeCol).addClass("col-1");
-        $(newActivityCol).addClass("col-10");
-        $(newTabCol).addClass("col-1 saveBtn");
-        // $( letterBtn ).attr( "data-letter", letters[i] );
+        $(newTimeCol).addClass("col-2 col-sm-1");
+        $(newActivityCol).addClass("col-8 col-sm-10 activity");
+        $(newActivityCol).attr("dataHour", i);
+        let idString = "hour" + i;
+        $(newActivityCol).attr("id", idString);
+        $(newTabCol).attr("dataHour", i);
+        $(newActivityCol).attr("contenteditable", "true");
+        $(newTabCol).addClass("col-2 col-sm-1 saveBtn");
+
         
         // add styling based on whether hour is in the past, current, or future
         if(i < currentHour)
@@ -38,17 +47,31 @@ $(document).ready(function() {
             time = (i - 12) + "PM";
 
         $(newTimeCol).text(time);
-        // $(newActivityCol).text("Sample Activity");
+        
+        // get text from localStorage, apply to activity
+        let activityArray = JSON.parse(localStorage.getItem("activities") || "[]");
+        
+        console.log("activityArray = " + activityArray);
+        if(activityArray[i] != undefined)
+        {
+            console.log("activityArray[i] = " + activityArray[i]);
+            $(newActivityCol).text(activityArray[i]);
+        }
+        
         
         let newImg = $("<img>");
         newImg.attr("src", "./assets/images/lock.png");
-        newImg.addClass("img-fluid");
-//        $(newTabCol).text("Button?");
+        newImg.addClass("img-fluid lockimage");
+
+        //        $(newTabCol).text("Button?");
         $(newTabCol).append(newImg);
         $(newHour).append(newTimeCol);
         $(newHour).append(newActivityCol);
         $(newHour).append(newTabCol);
         $("#timeblocks").append(newHour);
+
+
+
     }
 
     // formats the current date, returns it as a string
@@ -80,6 +103,32 @@ $(document).ready(function() {
     }
 
 
+    $(".saveBtn").on("click", function() {
+        // let test = $(this).attr("dataHour");
+        // alert("this is hour" + test);
+        let activityArray = JSON.parse(localStorage.getItem("activities") || "[]");
+
+        console.log(activityArray);
+
+        let hour = $(this).attr("dataHour");
+
+        let idString = "#hour" + hour;
+        console.log(idString);
+        console.log($(idString).text());
+
+        activityArray[hour] = $(idString).text();
+        localStorage.setItem("activities", JSON.stringify(activityArray));
+
+        // for(let i = 9; i < 18; i++) {
+        //     if(i == hour) {
+        //         let idString = "#hour" + i;
+        //         console.log($(idString).text());
+        //     } else {
+
+        //     }
+
+        // }
+    });
 
 
 
