@@ -19,14 +19,14 @@ $(document).ready(function() {
         
         // add the appropriate classes and attributes so that the divs style correctly and can be interacted with
         $(newHour).addClass("row hour");
-        $(newTimeCol).addClass("col-2 col-sm-1");
-        $(newActivityCol).addClass("col-8 col-sm-10 activity");
+        $(newTimeCol).addClass("col-2 col-md-1");
+        $(newActivityCol).addClass("col-8 col-md-10 activity");
         $(newActivityCol).attr("dataHour", i);
         let idString = "hour" + i;
         $(newActivityCol).attr("id", idString);
         $(newTabCol).attr("dataHour", i);
         $(newActivityCol).attr("contenteditable", "true");
-        $(newTabCol).addClass("col-2 col-sm-1 saveBtn");
+        $(newTabCol).addClass("col-2 col-md-1 saveBtn");
 
         
         // add styling based on whether hour is in the past, current, or future
@@ -58,7 +58,6 @@ $(document).ready(function() {
             $(newActivityCol).text(activityArray[i]);
         }
         
-        $(newTabCol).text("Hello");
         let newImg = $("<img>");
         newImg.attr("src", "./assets/images/lock.png");
         newImg.addClass("img-fluid lockimage");
