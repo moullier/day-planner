@@ -47,8 +47,11 @@ $(document).ready(function() {
 
         // format AM/PM
         let time;
-        if(i < 13)
+        if(i < 12) {
             time = i + "AM";
+        } else if (i == 12) {
+            time = i + "PM";
+        }
         else
             time = (i - 12) + "PM";
 
