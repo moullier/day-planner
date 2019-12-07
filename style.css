@@ -72,15 +72,15 @@ textarea{
   border-bottom-right-radius: 15px;
   background-color: #06AED5;
   color: white;
-  text-align: center
 }
 
 .saveBtn i:hover {
-  font-size: 25px;
+  font-size: 20px;
   transition: all .3s ease-in-out;
 }
 
-/* .saveBtn:hover {
+/* 
+.saveBtn:hover {
   font-size: 20px;
   background-color: #FFAEFF;
   transition: all .3s ease-in-out;

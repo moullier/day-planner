@@ -64,13 +64,18 @@ $(document).ready(function() {
             $(newActivityCol).text(activityArray[i]);
         }
         
+
         // create new image, set source to lock.png, and style it as img-fluid with bootstrap
-        let newImg = $("<img>");
-        newImg.attr("src", "./assets/images/lock.png");
-        newImg.addClass("img-fluid lockimage");
+        // let newImg = $("<img>");
+        // newImg.attr("src", "./assets/images/lock.png");
+        // newImg.addClass("img-fluid lockimage");
 
         // append the columns into the newHour row, and then append the newHour to the timeblocks div
-        $(newTabCol).append(newImg);
+        // $(newTabCol).append(newImg);
+
+        let saveIcon = $("<i>");
+        saveIcon.addClass("fas fa-save");
+        $(newTabCol).append(saveIcon);
         $(newHour).append(newTimeCol);
         $(newHour).append(newActivityCol);
         $(newHour).append(newTabCol);
