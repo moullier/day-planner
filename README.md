@@ -4,9 +4,9 @@
 
 This project is a simple day planner.  The user can enter activities in each hour from 9 AM to 5 PM, and save them to localStorage.  The planner will color code which hours are in the past, present, and future.
 
-Most of the HTML for the page is assembled in jQuery.  The HTML is created through a for loop, dynaming creating a row for each hour with columns inside the rows.  The project allowed to me practice creating HTML elements in jQuery and assigning them classes and attributes so as to interact with them in JavaScript.  I also worked with date/time methods, learning how to format them in a variety of ways.
+Most of the HTML for the page is assembled in jQuery.  The HTML is created through a for loop, dynaming creating a row for each hour with columns inside the rows.  The project allowed to me practice creating HTML elements in jQuery and assigning them classes and attributes so as to interact with them in JavaScript.  I also worked with date/time methods, learning how to format them in a variety of ways.  I didn't use moment.js for this project, I formatted the date manually, which gave me appreciation for what moment.js provides.
 
-The page is styled responsively using Bootstrap and a small amount of media queries.
+The page is styled responsively using Bootstrap and a small amount of media queries for font resizing.
 
 ## Resources
 
