@@ -1,4 +1,6 @@
-# day-planner
+# Day Planner
+
+Hosted at https://moullier.github.io/day-planner/
 
 ## Description
 
